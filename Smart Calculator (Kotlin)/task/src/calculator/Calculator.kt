@@ -1,23 +1,28 @@
 package calculator
 
+import java.math.BigInteger
 import java.util.*
 
 object Calculator {
 
-    val mapVariable = mutableMapOf<String, Int>()
+    val mapVariable = mutableMapOf<String, BigInteger>()
 
 
     private fun printVar(input: String) {
         println("${mapVariable[input]}")
     }
 
-    fun handleExpression(input: String): Int? {
+    fun handleExpression(input: String): BigInteger? {
+        if (!Input.isValidExpression(input)){
+            println("Invalid expression")
+            return 0.toBigInteger()
+        }
         val postFix=Input.infixToPostfix(input)
-        val rs=Stack<Int>()
+        val rs=Stack<BigInteger>()
 
         for (exp in postFix){
             if(Regex("\\d+").matches(exp)){
-                rs.push(exp.toInt())
+                rs.push(exp.toBigInteger())
                 continue
             }
             if(Regex("^[a-zA-Z]+$").matches(exp)){
@@ -28,7 +33,7 @@ object Calculator {
                     "+" -> rs.push(rs.pop()+rs.pop())
                     "-" -> rs.push(-rs.pop()+rs.pop())
                     "*" -> rs.push(rs.pop()*rs.pop())
-                    "/" -> rs.push((1.0/rs.pop()*rs.pop()).toInt())
+                    "/" -> rs.push((1.0/rs.pop().toDouble()*rs.pop().toDouble()).toBigDecimal().toBigInteger())
                 }
             }
 
@@ -36,38 +41,7 @@ object Calculator {
         println(rs.peek())
         return rs.pop()
 
-//        for (i in tokens.indices) {
-//            when (tokens[i]) {
-//                "+","-" -> {
-//                    operator.push(tokens[i])
-//                }
-//
-//                else -> {
-//                    number.push(
-//                        try {
-//                            tokens[i].toInt()
-//                        } catch (e: Exception) {
-//                            mapVariable[tokens[i]]
-//                        }
-//                    )
-//
-//                }
-//            }
-//            if (number.size == 2) {
-//                val second = number.pop()
-//                val first = number.pop()
-//                number.push(
-//                    when (operator.pop()) {
-//                        "+" -> second + first
-//                        "-" -> first - second
-//                        else -> 0
-//                    }
-//                )
-//            }
-//
-//        }
-//        println(number.peek())
-//        return number.pop()
+
     }
 
     fun handleVarAssign(input: String) {
@@ -83,7 +57,7 @@ object Calculator {
         }
 
         val value = try {
-            temp[1].toInt()
+            temp[1].toBigInteger()
         } catch (_: Exception) {
             if (!Input.isValidVarName(temp[1], print = false)) {
                 println("Invalid assignment")
@@ -92,7 +66,7 @@ object Calculator {
             if (!Input.isKnownVar(temp[1])) {
                 return
             }
-            mapVariable[temp[1]] ?: 0
+            mapVariable[temp[1]] ?: 0.toBigInteger()
         }
 
         mapVariable[temp[0]] = value

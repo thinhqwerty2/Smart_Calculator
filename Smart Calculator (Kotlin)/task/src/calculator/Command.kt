@@ -19,11 +19,11 @@ class Command {
             println("Unknown Command")
         }
 
-        fun helpCommand() {
+        private fun helpCommand() {
             println("The program calculates the sum of numbers")
         }
 
-        fun exitCommand() {
+        private fun exitCommand() {
             println("Bye!")
         }
     }

@@ -416,24 +416,9 @@ files:
         }
     }
   learner_created: false
-- name: src/calculator/Expression.kt
-  visible: true
-  text: |-
-    package calculator
-
-    class Expression(val type:String,var value:Int) {
-
-    }
-  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/7815#comment
-status: Failed
+status: Solved
 feedback:
-  message: "Exception in test #3\n\njava.util.EmptyStackException\n\tat java.base/java.util.Stack.peek(Stack.java:101)\n\
-    \tat calculator.Input$Instance.infixToPostfix(Input.kt:102)\n\tat calculator.Calculator.handleExpression(Calculator.kt:15)\n\
-    \tat calculator.Controller.start(Controller.kt:20)\n\tat calculator.MainKt.main(Main.kt:7)\n\
-    \tat calculator.MainKt.main(Main.kt)\n\nPlease find below the output of your program\
-    \ during this failed test.\nNote that the &#39;&gt;&#39; character indicates the\
-    \ beginning of the input line.\n\n---\n\n&gt; 7 + 3 * ((4 + 3) * 7 + 1) - 6 /\
-    \ (2 + 1)"
-  time: "Tue, 04 Apr 2023 11:03:24 UTC"
-record: -1
+  message: Congratulations!
+  time: "Tue, 04 Apr 2023 16:57:54 UTC"
+record: 7

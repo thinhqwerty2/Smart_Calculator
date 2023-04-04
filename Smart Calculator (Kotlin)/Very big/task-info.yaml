@@ -35,15 +35,6 @@ files:
         }
     }
   learner_created: false
-- name: src/calculator/InitAllThings.kt
-  visible: true
-  text: |-
-    package calculator
-
-    class InitAllThings {
-
-    }
-  learner_created: false
 - name: src/calculator/Calculator.kt
   visible: true
   text: |
@@ -525,5 +516,9 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/7816#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Tue, 04 Apr 2023 17:07:47 UTC"
 record: -1
